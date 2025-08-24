@@ -1,24 +1,25 @@
-# Default values for the Eclipse Dataspace Connector chart.
-# Override these values per environment as needed.
+replicaCount: 1
 
-## Your wildcard domain for ingress.  Replace starktechindistries with your own domain.
-domain: starktechindistries
-
-## EDC image and tag.  Use a stable version.  See https://github.com/eclipse-edc/Connector/releases
 image:
-  repository: ghcr.io/eclipse-edc/connector
-  tag: 0.3.0
+  repository: eclipse-dataspace/edc
+  tag: latest
+  pullPolicy: IfNotPresent
 
-## Credentials for the connector (replace with real values in production).
-credentials:
-  id: my-edc
-  secret: changeme
-
-## Exposed service ports (plain HTTP for dev).  TLS should be enabled in production.
 service:
-  port: 8181
+  type: ClusterIP
+  port: 8080
 
-## Additional configuration for compute‑to‑data or federated learning integration.
-features:
-  computeToData: true
-  federatedLearning: true
+env:
+  # Nota: queste sono variabili 'dummy' per far partire il container.
+  # L’integrazione reale EDC necessita configurazioni aggiuntive (control/data plane, API keys, catalogo, ecc.)
+  EDC_API_PORT: "8080"
+  EDC_LOG_LEVEL: "INFO"
+
+resources:
+  requests:
+    cpu: 200m
+    memory: 256Mi
+  limits:
+    cpu: 500m
+    memory: 512Mi
+

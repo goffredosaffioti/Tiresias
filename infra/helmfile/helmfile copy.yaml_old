@@ -1,0 +1,24 @@
+---
+environments:
+  dev:
+    values:
+      - values/edc.yaml
+
+helmDefaults:
+  createNamespace: true
+  wait: true
+  timeout: 600
+
+releases:
+  - name: edc-provider
+    namespace: edc-provider
+    chart: ../../charts/edc
+    values:
+      - role: provider
+      - {{ .Values }}
+  - name: edc-consumer
+    namespace: edc-consumer
+    chart: ../../charts/edc
+    values:
+      - role: consumer
+      - {{ .Values }}

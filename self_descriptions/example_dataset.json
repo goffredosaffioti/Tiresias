@@ -1,41 +1,19 @@
 {
   "@context": [
-    "https://w3id.org/idsa/v4/" ,
-    {
-      "edc": "https://w3id.org/edc/v0.0.1/"
-    }
+    "https://w3id.org/gaia-x/gax-trust-framework/v1",
+    "https://w3id.org/edc/v0.0.1/ns"
   ],
-  "@id": "https://starktechindistries/datasets/sample-01",
-  "@type": "ids:Resource",
-  "ids:version": "1.0.0",
-  "ids:title": {
-    "@value": "Sample Dataset",
-    "@language": "en"
-  },
-  "ids:description": {
-    "@value": "A synthetic dataset for demonstrating compute-to-data and federated learning.",
-    "@language": "en"
-  },
-  "ids:keyword": [
-    "synthetic",
-    "demo"
-  ],
-  "ids:publisher": {
-    "@id": "https://starktechindistries"
-  },
-  "ids:sovereign":"true",
-  "ids:contractOffer": [
-    {
-      "@id": "https://starktechindistries/contracts/sample-01-contract",
-      "@type": "ids:ContractOffer"
-    }
-  ],
-  "ids:resourceEndpoint": [
-    {
-      "@type": "ids:ConnectorEndpoint",
-      "ids:accessUrl": {
-        "@id": "http://edc-provider:8181/api/v1/datasets/sample-01"
-      }
-    }
-  ]
+  "id": "urn:tiresias:asset:dataset:demo-001",
+  "type": ["gx:Resource", "edc:DataAsset"],
+  "name": "Demo synthetic linear dataset",
+  "description": "Synthetic dataset for FL/compute-to-data demos. No personal data.",
+  "producer": "urn:participant:example-provider",
+  "dataCategory": "non-personal",
+  "policy": "urn:tiresias:policy:example:train-no-redistribute",
+  "endpoint": {
+    "type": "edc:HttpData",
+    "method": "POST",
+    "url": "http://edc.edc.svc.cluster.local/api/v1/data",
+    "auth": "edc:ApiKey"
+  }
 }
