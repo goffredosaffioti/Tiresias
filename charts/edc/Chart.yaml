@@ -1,0 +1,6 @@
+apiVersion: v2
+name: edc
+description: A minimal chart for deploying the Eclipse Dataspace Connector (EDC) as provider or consumer.
+type: application
+version: 0.1.0
+appVersion: 0.3.0

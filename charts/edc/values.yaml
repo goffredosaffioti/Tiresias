@@ -1,0 +1,21 @@
+# Default values for the EDC chart.
+# These can be overridden by the helmfile values or by specifying --set.
+
+image:
+  repository: ghcr.io/eclipse-edc/connector
+  tag: 0.3.0
+
+credentials:
+  id: default-edc
+  secret: default-secret
+
+service:
+  port: 8181
+
+domain: example.local
+
+role: provider
+
+features:
+  computeToData: false
+  federatedLearning: false

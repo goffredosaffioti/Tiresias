@@ -1,0 +1,63 @@
+{
+  "@context": [
+    "https://w3id.org/idsa/v4/",
+    {
+      "odrl": "http://www.w3.org/ns/odrl/2/"
+    }
+  ],
+  "@id": "https://starktechindistries/contracts/sample-01-contract",
+  "@type": "ids:ContractOffer",
+  "ids:permission": [
+    {
+      "@type": "odrl:Permission",
+      "odrl:target": {
+        "@id": "https://starktechindistries/datasets/sample-01"
+      },
+      "odrl:action": {
+        "@id": "odrl:use"
+      },
+      "odrl:constraint": [
+        {
+          "odrl:leftOperand": {
+            "@id": "odrl:purpose"
+          },
+          "odrl:operator": {
+            "@id": "odrl:eq"
+          },
+          "odrl:rightOperand": "training"
+        }
+      ],
+      "odrl:duty": [
+        {
+          "@type": "odrl:Duty",
+          "odrl:action": {
+            "@id": "odrl:delete"
+          },
+          "odrl:assignee": "consumer",
+          "odrl:constraint": [
+            {
+              "odrl:leftOperand": {
+                "@id": "odrl:elapsedTime"
+              },
+              "odrl:operator": {
+                "@id": "odrl:lt"
+              },
+              "odrl:rightOperand": "P30D"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "ids:prohibition": [
+    {
+      "@type": "odrl:Prohibition",
+      "odrl:target": {
+        "@id": "https://starktechindistries/datasets/sample-01"
+      },
+      "odrl:action": {
+        "@id": "odrl:distribute"
+      }
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "edc.fullname" . }}
+  labels:
+    app: {{ include "edc.name" . }}
+    role: {{ .Values.role | quote }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ include "edc.name" . }}
+      role: {{ .Values.role | quote }}
+  template:
+    metadata:
+      labels:
+        app: {{ include "edc.name" . }}
+        role: {{ .Values.role | quote }}
+    spec:
+      containers:
+        - name: edc
+          image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: EDC_CONNECTOR_NAME
+              value: {{ printf "%s-%s" .Values.credentials.id .Values.role | quote }}
+            - name: EDC_PARTICIPANT_ID
+              value: {{ .Values.credentials.id | quote }}
+            - name: EDC_API_PORT
+              value: {{ .Values.service.port | quote }}
+            - name: EDC_PROVIDER_ROLE
+              value: {{ (eq .Values.role "provider") | toString | quote }}
+            - name: EDC_CONSUMER_ROLE
+              value: {{ (eq .Values.role "consumer") | toString | quote }}
+          ports:
+            - containerPort: {{ .Values.service.port }}
+              name: http

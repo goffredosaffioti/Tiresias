@@ -1,0 +1,38 @@
+{
+  "@context": "http://www.w3.org/ns/odrl.jsonld",
+  "@type": "Policy",
+  "profile": "http://www.w3.org/ns/odrl/v3/core",
+  "uid": "policy:sample-training",
+  "permission": [
+    {
+      "target": "https://starktechindistries/datasets/sample-01",
+      "action": { "type": "use" },
+      "constraint": [
+        {
+          "leftOperand": "odrl:purpose",
+          "operator": "eq",
+          "rightOperand": "training"
+        }
+      ],
+      "duty": [
+        {
+          "action": { "type": "delete" },
+          "assignee": "consumer",
+          "constraint": [
+            {
+              "leftOperand": "odrl:elapsedTime",
+              "operator": "lt",
+              "rightOperand": "P30D"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "prohibition": [
+    {
+      "target": "https://starktechindistries/datasets/sample-01",
+      "action": { "type": "distribute" }
+    }
+  ]
+}
