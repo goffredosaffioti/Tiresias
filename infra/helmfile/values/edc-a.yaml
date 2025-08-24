@@ -1,0 +1,18 @@
+replicaCount: 1
+
+image:
+  repository: ghcr.io/eclipse-edc/connector
+  tag: 0.3.0
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 8181
+
+credentials:
+  id: org-a
+  secret: changeme-a
+
+features:
+  computeToData: true
+  federatedLearning: true

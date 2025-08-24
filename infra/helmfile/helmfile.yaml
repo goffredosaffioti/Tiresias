@@ -3,9 +3,15 @@ repositories:
     url: file://../../charts
 
 releases:
-  - name: edc
-    namespace: edc
+  - name: edc-a
+    namespace: org-a
     chart: local/edc
     createNamespace: true
     values:
-      - values/edc.yaml
+      - values/edc-a.yaml
+  - name: edc-b
+    namespace: org-b
+    chart: local/edc
+    createNamespace: true
+    values:
+      - values/edc-b.yaml
