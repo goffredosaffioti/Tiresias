@@ -1,8 +1,7 @@
 repositories:
   - name: local
-    url: file://../charts/edc
-    # url: file: charts/ --- IGNORE ---
-
+    filepath: vscode-vfs://github/goffredosaffioti/Tiresias/infra/helmfile/helmfile.yaml
+# ...existing code...
 releases:
   - name: edc-a
     namespace: org-a
