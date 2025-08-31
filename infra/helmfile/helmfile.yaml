@@ -1,18 +1,15 @@
-  - name: local
-    path: file://../charts/edc
-
+name: local
+path: file:///$(pwd)/charts/edc
 releases:
   - name: edc-a
     namespace: org-a
-    chart: local/edc
-    version: 0.1.0
+    chart: ../charts/edc
     createNamespace: true
     values:
       - values/edc-a.yaml
   - name: edc-b
     namespace: org-b
-    chart: local/edc
-    version: 0.1.0
+    chart: ../charts/edc
     createNamespace: true
     values:
       - values/edc-b.yaml
