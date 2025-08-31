@@ -1,17 +1,19 @@
 repositories:
   - name: local
-    filepath: vscode-vfs://github/goffredosaffioti/Tiresias/infra/helmfile/helmfile.yaml
-# ...existing code...
+    url: file://../charts/edc
+
 releases:
   - name: edc-a
     namespace: org-a
-    chart: ../../charts/edc
+    chart: local/edc
+    version: 0.1.0
     createNamespace: true
     values:
       - values/edc-a.yaml
   - name: edc-b
     namespace: org-b
-    chart: ../../charts/edc
+    chart: local/edc
+    version: 0.1.0
     createNamespace: true
     values:
       - values/edc-b.yaml
