@@ -1,6 +1,5 @@
-repositories:
   - name: local
-    url: file://../charts/edc
+    path: file://../charts/edc
 
 releases:
   - name: edc-a
