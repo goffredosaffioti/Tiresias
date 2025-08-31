@@ -1,17 +1,18 @@
 repositories:
   - name: local
-    url: file://../../charts
+    url: file://../charts/edc
+    # url: file: charts/ --- IGNORE ---
 
 releases:
   - name: edc-a
     namespace: org-a
-    chart: local/edc
+    chart: ../../charts/edc
     createNamespace: true
     values:
       - values/edc-a.yaml
   - name: edc-b
     namespace: org-b
-    chart: local/edc
+    chart: ../../charts/edc
     createNamespace: true
     values:
       - values/edc-b.yaml
